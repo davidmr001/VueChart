@@ -59,7 +59,7 @@ If Vue is detected, the component will be registered automatically.
   :data="chartData"
   :options="{scales: {yAxes: [{ticks: {beginAtZero: true}}]}}"
   :update-config="{duration: 800, easing: 'easeOutBounce'}"
-></vue-chart>
+/>
 ```
 
 ## properties
