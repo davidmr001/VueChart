@@ -1,9 +1,6 @@
 import Chart from 'chart.js';
 
-import mergeData from './mergeData';
-import mergeOptions from './mergeOptions';
-
-let {clone} = Chart.helpers;
+import Chart_helpers_mergeData from '/utils/Chart/helpers/mergeData';
 
 export default {
 	name: 'VueChart',
@@ -17,59 +14,61 @@ export default {
 
 	mounted() {
 		this.$watch(() => {
-			let type = this.type;
-			let data = clone(this.data);
-			let options = clone(this.options);
-			let updateConfig = this.updateConfig;
-			let chart = this.chart;
-
+			let {
+				$refs,
+				chart,
+				data,
+				options,
+				type,
+				updateConfig,
+			} = this;
+			data = Chart.helpers.clone(data);
+			options = Chart.helpers.clone(options);
 			if (chart) {
 				if (chart.config.type === type) {
-					mergeData(chart.data, data);
-					mergeOptions(chart.options, options);
+					Chart_helpers_mergeData(chart.data, data);
+					Chart.helpers.merge(chart.options, options);
 					chart.update(updateConfig);
 					return;
 				}
 				chart.destroy();
 			}
-			this.chart = new Chart(this.$refs.canvas, {type, data, options});
+			chart = new Chart($refs.canvas, {type, data, options});
+			Object.assign(this, {chart});
 		});
 	},
 
 	render(createElement) {
-		return (
-			createElement(
-				'div',
-				{
-					style: {
-						position: 'relative',
-						width: '100%',
-						height: '100%',
-					},
-				},
-				[
-					createElement(
-						'div',
-						{
-							style: {
-								position: 'absolute',
-								left: 0,
-								top: 0,
-								right: 0,
-								bottom: 0,
-							},
-						},
-						[
-							createElement(
-								'canvas',
-								{
-									ref: 'canvas',
-								},
-							),
-						],
-					),
-				],
-			)
+		let canvasElement = createElement(
+			'canvas',
+			{
+				ref: 'canvas',
+			},
 		);
+		let canvasContainerElement = createElement(
+			'div',
+			{
+				style: {
+					position: 'absolute',
+					top: 0,
+					right: 0,
+					bottom: 0,
+					left: 0,
+				},
+			},
+			[canvasElement],
+		);
+		let mainElement = createElement(
+			'div',
+			{
+				style: {
+					position: 'relative',
+					width: '100%',
+					height: '100%',
+				},
+			},
+			[canvasContainerElement],
+		);
+		return mainElement;
 	},
 };
