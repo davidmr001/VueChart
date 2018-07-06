@@ -41,4 +41,4 @@ let Chart_helpers_mergeData = function(target, source) {
 	return source;
 };
 
-export default mergeData;
+export default Chart_helpers_mergeData;
