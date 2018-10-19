@@ -1,6 +1,6 @@
 import Chart from 'chart.js';
 
-import Chart_helpers_mergeData from '/utils/Chart/helpers/mergeData';
+import Chart_helpers_patch from '/utils/Chart/helpers/patch';
 
 export default {
 	name: 'VueChart',
@@ -32,8 +32,8 @@ export default {
 			options = Chart.helpers.clone(options);
 			if (chart) {
 				if (chart.config.type === type) {
-					Chart_helpers_mergeData(chart.data, data);
-					Chart.helpers.merge(chart.options, options);
+					Chart_helpers_patch(chart.data, data);
+					Chart_helpers_patch(chart.options, options);
 					chart.update(updateConfig);
 					return chart;
 				}
