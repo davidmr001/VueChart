@@ -1,7 +1,7 @@
 {
 	"name": "vuechart",
 	"version": "18.7.6",
-	"description": "A very simple Vue wrapper for Chart.",
+	"description": "A simple wrapper for Chart.",
 	"keywords": [
 		"area",
 		"bar",
