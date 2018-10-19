@@ -2,12 +2,6 @@
 	"name": "vuechart",
 	"version": "18.7.6",
 	"description": "A very simple Vue wrapper for Chart.",
-	"main": "VueChart.js",
-	"scripts": {
-		"build": "rollup -c",
-		"prepublishOnly": "npm run build"
-	},
-	"repository": "https://github.com/SeregPie/VueChart.git",
 	"keywords": [
 		"area",
 		"bar",
@@ -24,8 +18,14 @@
 		"scatter",
 		"vue"
 	],
-	"author": "Sergej Sintschilin <seregpie@gmail.com>",
 	"license": "MIT",
+	"author": "Sergej Sintschilin <seregpie@gmail.com>",
+	"main": "VueChart.js",
+	"repository": "https://github.com/SeregPie/VueChart.git",
+	"scripts": {
+		"build": "rollup -c",
+		"prepublishOnly": "npm run build"
+	},
 	"dependencies": {
 		"chart.js": "^2.7.3"
 	},
