@@ -6,9 +6,9 @@ export default {
 	name: 'VueChart',
 
 	props: {
-		type: String,
 		data: Object,
 		options: Object,
+		type: String,
 		updateConfig: Object,
 	},
 
@@ -49,11 +49,11 @@ export default {
 			'div',
 			{
 				style: {
-					position: 'absolute',
-					top: 0,
-					right: 0,
 					bottom: 0,
 					left: 0,
+					position: 'absolute',
+					right: 0,
+					top: 0,
 				},
 			},
 			[canvasElement],
@@ -62,9 +62,9 @@ export default {
 			'div',
 			{
 				style: {
+					height: '100%',
 					position: 'relative',
 					width: '100%',
-					height: '100%',
 				},
 			},
 			[canvasContainerElement],
