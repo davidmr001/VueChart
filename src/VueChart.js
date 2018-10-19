@@ -39,26 +39,7 @@ export default {
 	},
 
 	render(createElement) {
-		let canvasElement = createElement(
-			'canvas',
-			{
-				ref: 'canvas',
-			},
-		);
-		let canvasContainerElement = createElement(
-			'div',
-			{
-				style: {
-					bottom: 0,
-					left: 0,
-					position: 'absolute',
-					right: 0,
-					top: 0,
-				},
-			},
-			[canvasElement],
-		);
-		let mainElement = createElement(
+		return createElement(
 			'div',
 			{
 				style: {
@@ -67,8 +48,24 @@ export default {
 					width: '100%',
 				},
 			},
-			[canvasContainerElement],
+			[createElement(
+				'div',
+				{
+					style: {
+						bottom: 0,
+						left: 0,
+						position: 'absolute',
+						right: 0,
+						top: 0,
+					},
+				},
+				[createElement(
+					'canvas',
+					{
+						ref: 'canvas',
+					},
+				)],
+			)],
 		);
-		return mainElement;
 	},
 };
