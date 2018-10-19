@@ -13,10 +13,16 @@ export default {
 	},
 
 	mounted() {
+		let chart;
 		this.$watch(() => {
+			chart = this.updateChart(chart);
+		});
+	},
+
+	methods: {
+		updateChart(chart) {
 			let {
 				$refs,
-				chart,
 				data,
 				options,
 				type,
@@ -29,13 +35,12 @@ export default {
 					Chart_helpers_mergeData(chart.data, data);
 					Chart.helpers.merge(chart.options, options);
 					chart.update(updateConfig);
-					return;
+					return chart;
 				}
 				chart.destroy();
 			}
-			chart = new Chart($refs.canvas, {type, data, options});
-			Object.assign(this, {chart});
-		});
+			return new Chart($refs.canvas, {type, data, options});
+		},
 	},
 
 	render(createElement) {
