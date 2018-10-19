@@ -28,16 +28,16 @@ Vue.component(VueChart.name, VueChart);
 
 *or*
 
-Register the component in the scope of another instance.
+Register the component in the scope of another component.
 
 ```javascript
 import VueChart from 'vuechart';
 
 export default {
-  // ...
   components: {
     [VueChart.name]: VueChart,
   },
+  /*...*/
 };
 ```
 
@@ -55,10 +55,10 @@ If Vue is detected, the component will be registered automatically.
 
 ```html
 <vue-chart
-  type="bar"
   :data="chartData"
   :options="{scales: {yAxes: [{ticks: {beginAtZero: true}}]}}"
   :update-config="{duration: 800, easing: 'easeOutBounce'}"
+  type="bar"
 />
 ```
 
@@ -66,7 +66,7 @@ If Vue is detected, the component will be registered automatically.
 
 | property | type | description |
 | ---: | :--- | :--- |
-| `type` | `String` | The type of the chart. Changing the value will recreate the chart. |
 | `data` | `Object` | The data of the chart. |
 | `options` | `Object` | The configuration options of the chart of the current type. |
-| `updateConfig` | `Object` | The additional configuration for the update process. |
+| `type` | `String` | The type of the chart. Changing the value will recreate the chart. |
+| `update-config` | `Object` | The additional configuration for the update process. |
