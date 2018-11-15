@@ -4,7 +4,6 @@ A simple wrapper for Chart.
 
 ## dependencies
 
-- [Vue](https://github.com/vuejs/vue)
 - [Chart](https://github.com/chartjs/Chart.js)
 
 ## setup
