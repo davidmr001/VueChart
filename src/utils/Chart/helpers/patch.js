@@ -21,13 +21,12 @@ let Chart_helpers_patch = function(target, source) {
 	if (Chart.helpers.isObject(source)) {
 		if (Chart.helpers.isObject(target)) {
 			for (let key in target) {
-				if (!key.startsWith('_') && target.hasOwnProperty(key) && source.hasOwnProperty(key)) {
-					target[key] = Chart_helpers_patch(target[key], source[key]);
-				}
-			}
-			for (let key in target) {
-				if (!key.startsWith('_') && target.hasOwnProperty(key) && !source.hasOwnProperty(key)) {
-					delete target[key];
+				if (!key.startsWith('_') && target.hasOwnProperty(key)) {
+					if (source.hasOwnProperty(key)) {
+						target[key] = Chart_helpers_patch(target[key], source[key]);
+					} else {
+						delete target[key];
+					}
 				}
 			}
 			for (let key in source) {
